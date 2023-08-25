@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import api from './services/api';
-
+import Api from './services/Api';
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <api /> 
+       <Api /> 
       </header>
     </div>
   );
