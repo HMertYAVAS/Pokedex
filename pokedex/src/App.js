@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { PokemonCards } from "./components/PokemonCards";
-import { getPokemonList, getPokemon } from "./services/Api.js"; // ".js" uzantısını kaldırdım
+import { getPokemonList, getPokemon } from "./services/Api.js";
 
 function App() {
-  const [selectedPokemon, setSelectedPokemon] = useState(null); // Başlangıçta seçili Pokemon yok
   const [selectedPokemonName, setSelectedPokemonName] = useState(null); 
   const [pokemonList, setPokemonList] = useState([]);
   const [pokemonSpecial, setPokemonSpecial] = useState([]);
+  const [searchTemp, setSearchTemp] = useState(""); // Değişiklik: Boş bir değerle başlatıldı
 
   const fetchingGetPokemonList = async () => {
     try {
@@ -33,7 +33,6 @@ function App() {
       // Seçilen Pokemon'u API'den al
       const selected = await getPokemon(pokemonName);
       setSelectedPokemonName(pokemonName);
-      setSelectedPokemon(selected);
       console.log("clicked")
     } catch (error) {
       console.error("Error fetching selected Pokemon:", error);
@@ -44,31 +43,38 @@ function App() {
     fetchingGetPokemonList();
   }, []); // work when start app
 
+  // Değişiklik: Arama işlevi
+  const handleSearchChange = (event) => {
+    const searchText = event.target.value.toLowerCase();
+    setSearchTemp(searchText);
+  };
+
+  // Filtrelenmiş pokemon listesi
+  const filteredPokemonList = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(searchTemp));
+
   return (
-<div className="App">
+    <div className="App">
       <header className="App-header">
         <div className="app">
-          {          
-            pokemonList &&
-            pokemonList.map((pokemon, key) => {
-              const types = pokemonSpecial[key] && pokemonSpecial[key].types;
-              return (
-                <PokemonCards
-                  key={key}
-                  title={pokemon.name}
-                  height={
-                    pokemonSpecial[key] && pokemonSpecial[key].height
-                  }
-                  weight={
-                    pokemonSpecial[key] && pokemonSpecial[key].weight
-                  }
-                  imageUrl={pokemonSpecial[key] && pokemonSpecial[key].sprites.front_default}
-                  types={types && types.map(item => item.type.name)}
-                  selected={selectedPokemonName!=null?selectedPokemonName:null}
-                  onClick={() => handlePokemonClick(pokemon.name)}
-                />
-              );
-            })}
+          <div>
+            <textarea onChange={handleSearchChange}></textarea>
+          </div>
+          {filteredPokemonList.map((filteredPokemon) => {
+            const pokemonData = pokemonSpecial.find(item => item.name === filteredPokemon.name);
+            const types = pokemonData && pokemonData.types;
+            return (
+              <PokemonCards
+                key={filteredPokemon.name}
+                title={filteredPokemon.name}
+                height={pokemonData && pokemonData.height}
+                weight={pokemonData && pokemonData.weight}
+                imageUrl={pokemonData && pokemonData.sprites.front_default}
+                types={types && types.map(item => item.type.name)}
+                selected={selectedPokemonName !== null ? selectedPokemonName : null}
+                onClick={() => handlePokemonClick(filteredPokemon.name)}
+              />
+            );
+          })}
         </div>
       </header>
     </div>
