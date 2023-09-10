@@ -4,23 +4,24 @@
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 50;
-    width: 300px;
+    width: 250px;
     margin: 16px;
     flex-direction: row;
   }
 .selectedCard{
-    flex-direction: row;
     border: 1px solid #24e72d;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    flex-direction: row;
+    height: 50;
+    width: 250px;
     margin: 16px;
 }
   
   .card-image {
     width: 100%;
-    height: 200px;
+    height: 100%; 
     object-fit: cover;
   }
   

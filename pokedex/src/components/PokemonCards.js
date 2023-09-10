@@ -1,22 +1,27 @@
 import React from "react";
-import "../css/pokemonCard.css";
 
-export const PokemonCards = ({ title, height, weight, imageUrl,types = [], onClick,selected }) => {
+export const PokemonCards = ({
+  title,
+  height,
+  weight,
+  imageUrl,
+  types = [],
+  onClick,
+  selected,
+}) => {
   return (
-    <div className={selected === title ? "selectedCard" : "card"} onClick={onClick}>
-      <img src={imageUrl} alt="Pokemon Image" className="card-image" />
-      <div className="card-content">
-        <h2 className="card-title">{title}</h2>
-        <div className="cardDetails">
-          <div className="physical">
-            <h6>Physical</h6>
-            <p className="card-text">Height: {height}</p>
-            <p className="card-text">Weight: {weight}</p>
-          </div>
-          <div className="special">
-            <h6>Special</h6>
-            <p className="card-text"> {types[0] != null?types[0]:null}</p>
-          </div>
+    <div
+      className={
+        selected === title
+          ? " bg-green-400 border-2 rounded-md w-36 "
+          : "grid bg-slate-500 border-2 border-slate-400 rounded-md w-36"
+      }
+      onClick={onClick}
+    >
+      <div className="flex flex-col items-center">
+        <img src={imageUrl} alt="Pokemon Image" className="w-full h-auto" />
+        <div className="flex justify-center my-1">
+          <h2 className="text-lg uppercase text-slate-950 font-mono ">{title}</h2>
         </div>
       </div>
     </div>
