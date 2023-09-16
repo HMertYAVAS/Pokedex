@@ -77,7 +77,7 @@ function App() {
       {/* Body */}
       <div className=" container flex">
         {/* PokemonCards */}
-        <div className="flex overflow-y-scroll overflow-x-hidden" style={{ height: 600 }}>
+        <div className="flex overflow-y-scroll overflow-x-hidden mx-5 " style={{ height: 600 }}>
           <div className="grid gap-4 grid-cols-4  ">
             {filteredPokemonList.map((filteredPokemon) => {
               const pokemonData = pokemonSpecial.find(
