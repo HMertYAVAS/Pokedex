@@ -44,6 +44,7 @@ function App() {
   };
 
   useEffect(() => {
+    document.title = "Pokedex";
     fetchingGetPokemonList();
   }, []); // work when start app
 
