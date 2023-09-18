@@ -117,6 +117,7 @@ function App() {
                 imageUrlFront={selectedPokemonData.sprites.front_default}
                 imageUrlBack={selectedPokemonData.sprites.back_default}
                 firstType={selectedPokemonData.types[0].type.name}
+                stats={selectedPokemonData.stats}
               />
             )}
           </div>
