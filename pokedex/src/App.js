@@ -3,6 +3,8 @@ import "./App.css";
 import { PokemonCards } from "./components/PokemonCards";
 import { PokemonSelectedCard } from "./components/PokemonSelectedCard";
 import { getPokemon, getPokemonList } from "./services/api.js";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 
 function App() {
   const [selectedPokemonName, setSelectedPokemonName] = useState(null);
@@ -81,8 +83,14 @@ function App() {
       {/* Body */}
       <div className=" container flex">
         {/* PokemonCards */}
-        <div className="flex overflow-y-scroll overflow-x-hidden mx-5 " style={{ height: 600 }}>
-          <div className="grid gap-4 grid-cols-4  ">
+        <div className="flex overflow overflow-x-hidden mx-5 " >
+          <InfiniteScroll
+          className="grid gap-4 grid-cols-4  "
+          next={fetchingGetPokemonList}
+          dataLength={1280}
+          hasMore={true}
+          height={600} // this is what I am talking about
+          loader={<p className="text-lg text-white">Loading...</p>}>
             {filteredPokemonList.map((filteredPokemon) => {
               const pokemonData = pokemonSpecial.find(
                 (item) => item.name === filteredPokemon.name
@@ -103,7 +111,7 @@ function App() {
                 />
               );
             })}
-          </div>
+            </InfiniteScroll>
         </div>
         {/* -------------- */}
 
