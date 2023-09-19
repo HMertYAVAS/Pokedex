@@ -10,11 +10,12 @@ function App() {
   const [pokemonSpecial, setPokemonSpecial] = useState([]);
   const [searchTemp, setSearchTemp] = useState(""); // Değişiklik: Boş bir değerle başlatıldı
   const [selectedPokemonData, setSelectedPokemonData] = useState({});
+  const [pokeVal,setPokeVal] = useState(0)
 
   const fetchingGetPokemonList = async () => {
     try {
       // Pokemon API List
-      const data = await getPokemonList(100);
+      const data = await getPokemonList(pokeVal+100);
       setPokemonList(data);
 
       //Pokemon icons API
@@ -24,6 +25,7 @@ function App() {
           return pokemonData;
         })
       );
+      setPokeVal(pokeVal+100)
       setPokemonSpecial(special);
     } catch (error) {
       console.error("Error fetching Pokemon list:", error);
@@ -46,6 +48,7 @@ function App() {
   useEffect(() => {
     document.title = "Pokedex";
     fetchingGetPokemonList();
+    handlePokemonClick("pikachu")
   }, []); // work when start app
 
   // Değişiklik: Arama işlevi

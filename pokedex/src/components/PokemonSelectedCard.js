@@ -64,8 +64,8 @@ export const PokemonSelectedCard = ({
       onClick={onClick}
     >
       {/* Pokemon Images */}
-      <div className="flex flex-col items-center">
-        <div>
+      <div className="flex flex-col">
+        <div className="self-center">
           <div className="flex flex-row border-b-4 rounded-lg border-slate-300">
             <img src={imageUrlFront} alt="Pokemon Image" className="w-auto h-36" />
             <img src={imageUrlBack} alt="Pokemon Image" className="w-auto h-36" />
@@ -77,7 +77,7 @@ export const PokemonSelectedCard = ({
         </div>
 
         {/* Pokemon Types */}
-        <div className="flex flex-row">
+        <div className="flex flex-row self-center">
           <h3 className="text-sm uppercase text-slate-950 font-mono w-20 text-center rounded mb-3" style={{ backgroundColor: getPokemonTypeColor(firstType) }}>{firstType}</h3>
         </div>
 
@@ -86,30 +86,32 @@ export const PokemonSelectedCard = ({
           {/* Height And Weight Values */}
           <div className="flex flex-row justify-center">
             <p className="text-base  text-slate-950 font-mono">Height:</p>
-            <p className="text-sm  text-slate-950 font-mono mr-5 mt-0.5 ">{height}ft</p>
+            <p className="text-sm  text-slate-50 font-mono mr-5 mt-0.5 ">{height}ft</p>
 
             <p className="text-base  text-slate-950 font-mono">Weight:</p>
-            <p className="text-sm  text-slate-950 font-mono mt-0.5">{weight}lb</p>
+            <p className="text-sm  text-slate-50 font-mono mt-0.5">{weight}lb</p>
           </div>
 
           {/* Specials */}
-          <div className="flex flex-row justify-center mt-3 mb-1">
+          <div className="flex flex-row justify-center mt-3">
             <p className="text-lg">Stats</p>
-            <p className=""/>
           </div>
 
-          <div className="flex flex-col items-center border-t-2 border-slate-900">
+          <hr className="border-t-2 border-slate-900 w-48 mx-auto mb-1" />
+          <div className="flex flex-col ml-24 ">
 
-          {
-  stats.map((item, index) => {
-    return (
-      <div className="flex flex-row justify-start items-start" key={index}>
-        <p className="text-base uppercase text-slate-950 font-mono">{stats[index].stat.name.replace(/-/g, " ")}:</p>
-        <p className="text-sm text-slate-950 font-mono mt-0.5">{stats[index].base_stat}</p>
-      </div>
-    );
-  })
-}
+            {
+              stats.map((item, index) => {
+                return (
+                  <div className="flex flex-row justify-start items-start" key={index}>
+                    <p className="text-base uppercase text-slate-950 font-mono">
+                      {stats[index].stat.name.replace(/-/g, " ")}:
+                    </p>
+                    <p className="text-sm text-slate-50 font-mono mt-0.5">{stats[index].base_stat}</p>
+                  </div>
+                );
+              })
+            }
 
           </div>
         </div>
