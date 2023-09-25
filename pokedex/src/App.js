@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { PokemonCards } from "./components/PokemonCards";
 import { PokemonSelectedCard } from "./components/PokemonSelectedCard";
-import { getPokemon, getPokemonList } from "./services/api.js";
+import { getPokemon, getPokemonList } from "./services/Api.js";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 

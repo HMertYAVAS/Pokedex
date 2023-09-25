@@ -78,7 +78,7 @@ export const PokemonSelectedCard = ({
 
         {/* Pokemon Types */}
         <div className="flex flex-row self-center">
-          <h3 className="text-sm uppercase text-slate-950 font-mono w-20 text-center rounded mb-3" style={{ backgroundColor: getPokemonTypeColor(firstType) }}>{firstType}</h3>
+          <h3 className="text-sm uppercase text-slate-100 font-mono w-20 text-center rounded mb-3" style={{ backgroundColor: getPokemonTypeColor(firstType) }}>{firstType}</h3>
         </div>
 
         <div className="">
