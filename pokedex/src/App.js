@@ -83,7 +83,7 @@ function App() {
       {/* Body */}
       <div className=" container flex">
         {/* PokemonCards */}
-        <div className="flex overflow overflow-x-hidden mx-5 " >
+        <div className="flex overflow overflow-x-hidden ml-56 " >
           <InfiniteScroll
           className="grid gap-4 grid-cols-4  "
           next={fetchingGetPokemonList}
