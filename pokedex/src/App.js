@@ -70,7 +70,7 @@ function App() {
       style={{ minHeight: "100vh" }}
     >
       {/* SearchBar*/}
-      <div className="flex justify-center my-5 ">
+      <div className="flex justify-center mt-8 mb-24 ">
         <input
           className="grow-0 basis-1/4 text-center border-2  rounded-lg outline-none border-zinc-400 focus:border-green-600"
           type="text"
